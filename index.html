@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aritel SV Digital</title>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,#1e3c72,#2a5298,#0f2027,#203a43);
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
+color:white;
+text-align:center;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+header{
+padding:25px;
+font-size:26px;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+.container{
+padding:40px 20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:30px;
+width:300px;
+transition:0.4s;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+background:rgba(255,255,255,0.2);
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+.price{
+font-size:22px;
+margin:15px 0;
+font-weight:bold;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:50px;
+background:linear-gradient(to right,#00c6ff,#0072ff);
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+footer{
+margin-top:50px;
+padding:20px;
+background:rgba(0,0,0,0.4);
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+Aritel SV Digital
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>Instagram Growth Guide</h3>
+<p>Complete step-by-step strategy</p>
+<div class="price">₹99</div>
+<button onclick="payNow(99)">Buy Now</button>
+</div>
+
+<div class="card">
+<h3>Canva Pro Templates Pack</h3>
+<p>Premium ready-to-use designs</p>
+<div class="price">₹149</div>
+<button onclick="payNow(149)">Buy Now</button>
+</div>
+
+</div>
+
+<footer>
+© 2026 Aritel SV Digital | All Rights Reserved
+</footer>
+
+<script>
+function payNow(amount){
+
+var options = {
+"key": "rzp_test_YOURKEYHERE",  // 🔴 Replace with your real key
+"amount": amount * 100,
+"currency": "INR",
+"name": "Aritel SV Digital",
+"description": "Digital Product Purchase",
+"handler": function (response){
+
+// Redirect to success page
+window.location.href = "success.html?payment_id=" + response.razorpay_payment_id;
+
+},
+"theme": {
+"color": "#0072ff"
+}
+};
+
+var rzp = new Razorpay(options);
+rzp.open();
+}
+</script>
+
+</body>
+</html>
