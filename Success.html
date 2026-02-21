@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment Successful</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+background:linear-gradient(135deg,#11998e,#38ef7d);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.box{
+background:rgba(255,255,255,0.1);
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+h1{
+margin-bottom:20px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:30px;
+background:white;
+color:#11998e;
+cursor:pointer;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>✅ Payment Successful!</h1>
+<p>Thank you for your purchase.</p>
+<p id="paymentId"></p>
+<br>
+<button onclick="window.location.href='index.html'">Back to Home</button>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const paymentId = urlParams.get('payment_id');
+if(paymentId){
+document.getElementById("paymentId").innerHTML = "Payment ID: " + paymentId;
+}
+</script>
+
+</body>
+</html>
